@@ -11,7 +11,9 @@ import com.amap.api.location.AMapLocationClient
 import com.amap.api.location.AMapLocationListener
 import com.warchaser.baselib.tools.NLog
 import com.warchaser.baselib.tools.PackageUtil
+import com.warchaser.baselib.tools.StringUtil
 import com.warchaser.trailrecoder.tools.LocationUtil
+import com.warchaser.trailrecoder.tools.ServiceUtil
 
 class LocationService : Service() {
 
@@ -29,11 +31,35 @@ class LocationService : Service() {
 
     override fun onCreate() {
         super.onCreate()
+        NLog.i(TAG, "LocationService.onCreate()")
+    }
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        handleCommand(intent)
+        return super.onStartCommand(intent, flags, startId)
     }
 
     override fun onDestroy() {
         super.onDestroy()
+        NLog.i(TAG, "LocationService.onDestroy()")
         cancelNotification()
+    }
+
+    private fun handleCommand(intent: Intent?){
+        intent?.run {
+            val action : String? = action
+            action?.run {
+                NLog.i(TAG, "handleCommand, action is ${StringUtil.getRealValue(this)}")
+                when(action){
+                    ServiceUtil.START_LOCATING -> {
+
+                    }
+                    ServiceUtil.STOP_LOCATING -> {
+
+                    }
+                }
+            }
+        }
     }
 
     private fun startLocating(){

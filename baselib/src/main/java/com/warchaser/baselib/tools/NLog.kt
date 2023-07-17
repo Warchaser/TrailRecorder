@@ -2,9 +2,9 @@ package com.warchaser.baselib.tools
 
 import android.content.Context
 import android.os.Environment
-import android.support.multidex.BuildConfig
 import android.text.TextUtils
 import android.util.Log
+import com.warchaser.baselib.BuildConfig
 
 import org.json.JSONArray
 import org.json.JSONObject

@@ -44,4 +44,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     implementation project(":baselib")
+
+    implementation 'com.guolindev.permissionx:permissionx:1.7.1'
+
+    //MultiDex
+    implementation 'com.android.support:multidex:1.0.3'
 }
