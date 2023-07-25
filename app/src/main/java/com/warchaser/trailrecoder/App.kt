@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.Intent
 import android.support.multidex.MultiDex
+import com.amap.api.location.AMapLocationClient
 import com.warchaser.baselib.tools.NLog
 
 class App : Application(){
@@ -15,6 +16,9 @@ class App : Application(){
         mInstance = this
 
         NLog.initLogFile(this)
+
+        AMapLocationClient.updatePrivacyAgree(this, true)
+        AMapLocationClient.updatePrivacyShow(this, true, true)
 
         Intent(this, LocationService::class.java).run {
             startService(this)

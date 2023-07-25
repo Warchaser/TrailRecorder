@@ -94,6 +94,7 @@ class LocationService : Service() {
     }
 
     private fun getNotification() : Notification {
+        NLog.i(TAG, "StartNotification()")
         if(mNotificationManager == null){
             mNotificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager?
         }
@@ -114,8 +115,8 @@ class LocationService : Service() {
     }
 
     private fun cancelNotification(){
+        NLog.i(TAG, "CancelNotification()")
         mNotificationManager?.run {
-            NLog.e(TAG, "CancelNotification()")
             cancel(NOTIFICATION_ID)
             stopForeground(STOP_FOREGROUND_DETACH)
         }

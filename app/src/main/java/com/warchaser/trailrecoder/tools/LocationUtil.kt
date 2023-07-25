@@ -1,6 +1,7 @@
 package com.warchaser.trailrecoder.tools
 
 import com.amap.api.location.AMapLocationClientOption
+import com.amap.api.location.AMapLocationQualityReport
 
 class LocationUtil {
 
@@ -34,6 +35,20 @@ class LocationUtil {
             isLocationCacheEnable = true
         }
 
+        /**
+         * 获取GPS状态的字符串
+         * @param statusCode GPS状态码
+         * @return String GPS状态中文描述
+         */
+        @JvmStatic
+        fun getGPSStatusString(statusCode : Int) : String = when(statusCode){
+                AMapLocationQualityReport.GPS_STATUS_OK -> "GPS状态正常"
+                AMapLocationQualityReport.GPS_STATUS_NOGPSPROVIDER -> "手机中没有GPS Provider，无法进行GPS定位"
+                AMapLocationQualityReport.GPS_STATUS_OFF -> "GPS关闭，建议开启GPS，提高定位质量"
+                AMapLocationQualityReport.GPS_STATUS_MODE_SAVING -> "选择的定位模式中不包含GPS定位，建议选择包含GPS定位的模式，提高定位质量"
+                AMapLocationQualityReport.GPS_STATUS_NOGPSPERMISSION -> "没有GPS定位权限，建议开启gps定位权限"
+                else -> ""
+        }
     }
 
 }
