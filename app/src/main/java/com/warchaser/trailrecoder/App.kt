@@ -9,8 +9,6 @@ import com.warchaser.baselib.tools.NLog
 
 class App : Application(){
 
-    private lateinit var mInstance : App
-
     override fun onCreate() {
         super.onCreate()
         mInstance = this
@@ -25,7 +23,12 @@ class App : Application(){
         }
     }
 
-    fun getInstance() = mInstance
+    companion object{
+
+        private lateinit var mInstance : App
+        @JvmStatic
+        fun getInstance() = mInstance
+    }
 
     override fun attachBaseContext(base: Context?) {
         super.attachBaseContext(base)

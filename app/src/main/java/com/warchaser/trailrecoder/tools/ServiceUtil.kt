@@ -3,6 +3,7 @@ package com.warchaser.trailrecoder.tools
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import com.warchaser.trailrecoder.App
 import com.warchaser.trailrecoder.LocationService
 
 class ServiceUtil {
@@ -21,12 +22,12 @@ class ServiceUtil {
             }
         }
 
-        fun startLocating(context: Context){
-            sendAction2Service(context, START_LOCATING)
+        fun startLocating(){
+            sendAction2Service(App.getInstance(), START_LOCATING)
         }
 
-        fun stopLocating(context: Context){
-            sendAction2Service(context, STOP_LOCATING)
+        fun stopLocating(){
+            sendAction2Service(App.getInstance(), STOP_LOCATING)
         }
     }
 

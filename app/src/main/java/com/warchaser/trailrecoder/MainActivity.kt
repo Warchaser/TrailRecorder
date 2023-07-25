@@ -6,13 +6,28 @@ import com.warchaser.baselib.mvp.BasePresenter
 import com.warchaser.baselib.mvp.BaseView
 import com.warchaser.baselib.ui.BaseActivity
 import com.warchaser.trailrecoder.databinding.ActivityMainBinding
+import com.warchaser.trailrecoder.tools.ServiceUtil
 
 class MainActivity : BaseActivity<BasePresenter<BaseView>, BaseView, ActivityMainBinding>(){
 
     override fun afterSetContentView(savedInstanceState: Bundle?) {
-        viewBound.run {
-            mMapView.onCreate(savedInstanceState)
+        initViews(savedInstanceState)
+    }
 
+    private fun initViews(savedInstanceState: Bundle?){
+        viewBound.run {
+
+            mMapView.run {
+                mMapView.onCreate(savedInstanceState)
+                mMapView.map.run {
+                    isMyLocationEnabled = true
+                    uiSettings.isMyLocationButtonEnabled = true
+                }
+            }
+
+            mBtnStartLocation.setOnClickListener { ServiceUtil.startLocating() }
+
+            mBtnStopLocation.setOnClickListener { ServiceUtil.stopLocating() }
         }
     }
 

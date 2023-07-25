@@ -18,7 +18,7 @@ class LocationUtil {
             //可选，设置网络请求超时时间。默认为30秒。在仅设备模式下无效
             httpTimeOut = 30000
             //可选，设置定位间隔。默认为2秒
-            interval = 2000
+            interval = 10000
             //可选，设置是否返回逆地理地址信息。默认是true
             isNeedAddress = true
             //可选，设置是否单次定位。默认是false

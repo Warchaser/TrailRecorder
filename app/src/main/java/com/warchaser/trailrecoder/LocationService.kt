@@ -52,10 +52,10 @@ class LocationService : Service() {
                 NLog.i(TAG, "handleCommand, action is ${StringUtil.getRealValue(this)}")
                 when(action){
                     ServiceUtil.START_LOCATING -> {
-
+                        startLocating()
                     }
                     ServiceUtil.STOP_LOCATING -> {
-
+                        stopLocating()
                     }
                 }
             }
@@ -80,6 +80,13 @@ class LocationService : Service() {
         }
 
         startForeground()
+    }
+
+    private fun stopLocating(){
+        mLocationClient?.run {
+            stopLocation()
+            cancelNotification()
+        }
     }
 
     private val mLocationListener = object : AMapLocationListener{
