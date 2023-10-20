@@ -252,7 +252,7 @@ object NLog {
 
     @JvmStatic
     private fun deleteOldFiles(days : Int, files : Array<File>?, todayDate : Date?){
-        if(files == null || files.isEmpty() || todayDate == null){
+        if(files.isNullOrEmpty() || todayDate == null){
            return
         }
 

@@ -50,7 +50,7 @@ class LocationService : Service() {
             val action : String? = action
             action?.run {
                 NLog.i(TAG, "handleCommand, action is ${StringUtil.getRealValue(this)}")
-                when(action){
+                when(this){
                     ServiceUtil.START_LOCATING -> {
                         startLocating()
                     }
@@ -92,7 +92,10 @@ class LocationService : Service() {
     private val mLocationListener = object : AMapLocationListener{
         override fun onLocationChanged(location: AMapLocation?) {
             NLog.i(TAG, "mLocationListener.onLocationChanged()")
-
+            location?.run {
+                NLog.i(TAG, "altitude is $altitude")
+                NLog.i(TAG, "longitude is $longitude")
+            }
         }
     }
 
@@ -107,7 +110,7 @@ class LocationService : Service() {
         }
 
         Notification.Builder(this, CHANNEL_ID).setSmallIcon(R.mipmap.ic_launcher).run {
-            NotificationChannel(CHANNEL_ID, "LocationService", NotificationManager.IMPORTANCE_HIGH).run {
+            NotificationChannel(CHANNEL_ID, TAG, NotificationManager.IMPORTANCE_HIGH).run {
                 setSound(null, null)
                 mNotificationManager?.createNotificationChannel(this)
             }

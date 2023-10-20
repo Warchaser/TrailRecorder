@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'org.greenrobot.greendao'
 }
 
 android {
@@ -54,4 +55,7 @@ dependencies {
 
     //MultiDex
     implementation 'com.android.support:multidex:1.0.3'
+
+    //GreenDao
+    implementation 'org.greenrobot:greendao:3.3.1'
 }

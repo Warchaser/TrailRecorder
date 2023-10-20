@@ -1,5 +1,4 @@
 pluginManagement {
-    ext.kotlin_version = '1.8.20'
     repositories {
         //central
         maven{url 'https://maven.aliyun.com/repository/central'}
@@ -26,6 +25,7 @@ dependencyResolutionManagement {
         google()
     }
 }
+
 rootProject.name = "TrailRecoder"
 include ':app'
 include ':baselib'
