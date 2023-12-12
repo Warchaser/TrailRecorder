@@ -89,13 +89,11 @@ class LocationService : Service() {
         }
     }
 
-    private val mLocationListener = object : AMapLocationListener{
-        override fun onLocationChanged(location: AMapLocation?) {
-            NLog.i(TAG, "mLocationListener.onLocationChanged()")
-            location?.run {
-                NLog.i(TAG, "altitude is $altitude")
-                NLog.i(TAG, "longitude is $longitude")
-            }
+    private val mLocationListener = AMapLocationListener { location ->
+        NLog.i(TAG, "mLocationListener.onLocationChanged()")
+        location?.run {
+            NLog.i(TAG, "altitude is $altitude")
+            NLog.i(TAG, "longitude is $longitude")
         }
     }
 

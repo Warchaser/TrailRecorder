@@ -28,7 +28,7 @@ class RecordManager {
             if(mRecordingList.size >= MAX_LENGTH){
                 val result = CopyUtil.copy(mRecordingList)
                 flush2Database(result)
-                mRecordingList.clear()
+
             }
             mRecordingList.add(location)
         })
@@ -36,6 +36,7 @@ class RecordManager {
 
     private fun flush2Database(list : ArrayList<AMapLocation>){
 
+        mRecordingList.clear()
     }
 
 }

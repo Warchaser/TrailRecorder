@@ -18,8 +18,8 @@ class MainActivity : BaseActivity<BasePresenter<BaseView>, BaseView, ActivityMai
         viewBound.run {
 
             mMapView.run {
-                mMapView.onCreate(savedInstanceState)
-                mMapView.map.run {
+                onCreate(savedInstanceState)
+                map.run {
                     isMyLocationEnabled = true
                     uiSettings.isMyLocationButtonEnabled = true
                 }
